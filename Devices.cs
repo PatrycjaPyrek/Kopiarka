@@ -50,11 +50,52 @@ namespace Podstawowe
         void Scan(out IDocument document, IDocument.FormatType formatType);
     }
 
-    public interface IFax : IScanner, IPrinter
+    public class Printer : IPrinter
     {
-         void Fax()
+        public int Counter => throw new NotImplementedException();
+
+        public IDevice.State GetState()
         {
-            
+            throw new NotImplementedException();
+        }
+
+        public void PowerOff()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PowerOn()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Print(in IDocument document)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class Scanner : IScanner
+    {
+        public int Counter => throw new NotImplementedException();
+
+        public IDevice.State GetState()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PowerOff()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PowerOn()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Scan(out IDocument document, IDocument.FormatType formatType)
+        {
+            throw new NotImplementedException();
         }
     }
 }

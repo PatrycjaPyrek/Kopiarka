@@ -6,7 +6,7 @@ using Podstawowe;
 
 namespace Zadanie1
 {
-    public class Copier : BaseDevice, IScanner, IPrinter
+    public class Copier : BaseDevice
     {
         private int printCounter = 0;
         private int scanCounter = 0;
@@ -17,9 +17,9 @@ namespace Zadanie1
         //liczba zeskanowanych dokumentow
         public int ScanCounter => scanCounter;
         public int Counter => counter;
+        public Printer Printer { get; set; }
+        public Scanner Scanner { get; set; }
 
-
-        //referencja
         public void Print(in IDocument document)
         {
             if (GetState() == IDevice.State.off)
@@ -31,8 +31,6 @@ namespace Zadanie1
 
             printCounter += 1;
         }
-       
-        //referencja
         public void Scan(out IDocument document, IDocument.FormatType formatType = IDocument.FormatType.JPG)
         {
             if (GetState() == IDevice.State.off)
@@ -57,22 +55,5 @@ namespace Zadanie1
             Console.WriteLine(DateTime.Now + "Scan: " + document.GetFileName());
             scanCounter += 1;
         }
-        public void ScanAndPrint()
-        {
-            IDocument document;
-            Scan(out document, IDocument.FormatType.JPG);
-            Print(document);
-
-        }
-        //liczba uruchomien drukarki
-        //public int Counter { get; set; }
-        public new void PowerOn()
-        {
-            if (GetState() == IDevice.State.on)
-                return;
-            base.PowerOn();
-            counter += 1;
-        }
-
     }
 }
